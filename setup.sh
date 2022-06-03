@@ -1,8 +1,9 @@
 mkdir -p ~/.streamlit/
 
+#Adicionar o HEROKU_EMAIL_ADDRESS na aba Settings/Secrets do GitHub
 echo "\
 [general]\n\
-email = \"${gontijo.pedro@gmail.com}\"\n\
+email = \"${HEROKU_EMAIL_ADDRESS}\"\n\
 " > ~/.streamlit/credentials.toml
 
 echo "\

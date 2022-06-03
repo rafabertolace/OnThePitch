@@ -79,7 +79,7 @@ odds = st.number_input('Please, inform the odds on your favorite Booking Platfor
 
 #Making a dictionary for the API request ----------
 params = {
-        'league': league_option,
+        'league_option': league_option,
         'bet_option': bet_option,
         'odds': odds
             }
