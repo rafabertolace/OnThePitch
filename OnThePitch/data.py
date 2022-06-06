@@ -2,7 +2,7 @@ import pandas as pd
 
 GCP_BUCKET_PATH = "gs://onthepitch869/"
 GCP_FOLDER_NAME = "data/"
-filename = 'belgium_2019_2020.csv'
+filename = 'temp_data_set.csv'
 
 
 def get_data(nrows=10_000):
@@ -12,4 +12,5 @@ def get_data(nrows=10_000):
 
 
 if __name__ == '__main__':
-    df = get_data()
+    df = get_data(nrows=100)
+    print(df)
