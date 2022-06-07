@@ -20,7 +20,8 @@ if __name__ == "__main__":
     #df_test = df[df['season_21_22']==True]
 
     #Step 4: Define our X_train and y_train
-    X_train = df_train.drop(columns='payout_under_2.5_pinacle_closing')
+    #X_train = df_train.drop(columns='payout_under_2.5_pinacle_closing')
+    X_train = df_train[['year_number', 'year_number_ratio', 'month_number']] #Delete this line
     y_train = df_train['payout_under_2.5_pinacle_closing']
 
     #Step 5: Split the data set

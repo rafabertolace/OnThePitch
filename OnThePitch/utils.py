@@ -16,4 +16,4 @@ def upload_model_to_gcp():
 def save_model(model):
     """Save the model into a .joblib format"""
     joblib.dump(model, 'model.joblib')
-    upload_model_to_gcp()
+    #upload_model_to_gcp()
