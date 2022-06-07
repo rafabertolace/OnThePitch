@@ -8,13 +8,18 @@ wheel>=0.29
 numpy
 pandas
 scikit-learn
+#matplotlib
+#seaborn
+scipy
+xgboost
+
 
 # tests/linter
-black
-coverage
-flake8
-pytest
-yapf
+#black
+#coverage
+#flake8
+#pytest
+#yapf
 
 # API
 gcsfs
@@ -28,5 +33,5 @@ uvicorn
 # utilities
 six>=1.14
 joblib
-memoized-property
-termcolor
+#memoized-property
+#termcolor

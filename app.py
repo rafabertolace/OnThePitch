@@ -79,21 +79,21 @@ odds = st.number_input('Please, inform the odds on your favorite Booking Platfor
 
 #Making a dictionary for the API request ----------
 params = {
-        'league_option': league_option,
-        'bet_option': bet_option,
+        'league_option': 1, #league_option,
+        'bet_option': 1, #bet_option,
         'odds': odds
             }
-
-
-#Requesting the information on the API ----------
-#This is the code for the Taxi Fare Model; Update it!
-url = 'https://taxifare.lewagon.ai/predict'
-response = requests.get(url, params = params).json()
 
 
 
 if st.button("LET'S GO"):
     '''# Analyzing the data...'''
+
+    #Requesting the information on the API ----------
+    #This is the code for the Taxi Fare Model; Update it!
+    url = 'http://0.0.0.0:8080/predict'
+    response = requests.get(url, params = params).json()
+
     bar = st.progress(0)
     for i in range(100):
         bar.progress(i + 1)
@@ -104,6 +104,6 @@ if st.button("LET'S GO"):
     this bet are **statistically significant**!'''
     '''## Go place that bet!'''
 
-
+    st.write(response)
 
 #st.markdown('# ' + '$' + str(round(response['fare'], 2)))
