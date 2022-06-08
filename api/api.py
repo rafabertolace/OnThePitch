@@ -15,19 +15,33 @@ app.add_middleware(
     allow_headers=["*"],    #Allows all headers
 )
 
+
 @app.get("/")
 def index():
     return {"greeting": "Hello world"}
 
 
 @app.get("/predict")
-def predict(league_option:float, bet_option:float, odds:float):
+def predict(D1:float, D2:float, D3:float, D4:float, vig_rate:bool, market_consensus:bool,
+            year:int, match_time_after_4_pm:float, match_time_before_4_pm:float,
+            odds_1_to_1_5:float, odds_1_5_to_2_0:float, odds_2_0_to_3:float, odds_3_to_10:float):
     #Predict BET or NO BET based on the values inputed by the user
 
-    X_pred = {"league_option": league_option,
-               "bet_option": bet_option,
-                "odds": odds
-                }
+    X_pred = {
+            'D1': D1,
+            'D2': D2,
+            'D3': D3,
+            'D4': D4,
+            'vig_rate': vig_rate,
+            'market_consensus': market_consensus,
+            'year': int(year),
+            'match_time_after_4_pm': match_time_after_4_pm,
+            'match_time_before_4_pm': match_time_before_4_pm,
+            'odds_1_to_1_5': odds_1_to_1_5,
+            'odds_1_5_to_2_0': odds_1_5_to_2_0,
+            'odds_2_0_to_3': odds_2_0_to_3,
+            'odds_3_to_10': odds_3_to_10
+            }
 
     X_pred_df = pd.DataFrame(X_pred, index=[0])
     model = joblib.load('model.joblib')
