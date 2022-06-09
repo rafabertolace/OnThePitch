@@ -11,15 +11,13 @@ st.set_page_config(
             initial_sidebar_state="auto") #'auto', 'collapsed' or 'expanded'
 
 
-
+# - - - - - - - - - -
+# Page Title
+# - - - - - - - - - -
 '''
 # On The Pitch
 **World Class Footbal Betting Strategies**
 '''
-
-#data_linear_booleans_lean_P_under[data_linear_booleans_lean_P_under['season_21_22']==False][[
-#"game_starts_after_4pm_2",
-#"game_starts_after_4pm_1",
 
 # - - - - - - - - - -
 # Division selection
@@ -48,9 +46,6 @@ elif division_option == 'D3':
 elif division_option == 'D4':
     D4 = 1.0
 
-if division_option != '':
-    st.write(f'You have chosen **{division_option}**!')
-
 
 # - - - - - - - - - -
 # Betting options
@@ -65,19 +60,6 @@ bets = [
         ]
 
 bet_option = st.selectbox('Now. select on what you want to place a bet:', bets)
-
-if bet_option != '':
-    st.write(f'You have chosen **{bet_option}**!')
-    if bet_option == 'Over 2.5 Goals in the match':
-        '''Wow! You think the match will be filled with goals! Cool!'''
-    elif bet_option == 'Under 2.5 Goals in the match':
-        '''You think the teams won't score much... Ok!'''
-    elif bet_option == 'Home Team Wins':
-        '''Goooooo Home Team!'''
-    elif bet_option == 'Away Team Wins':
-        '''Really? You might be right after all!'''
-    elif bet_option == 'Draw':
-        '''Well, no winners... Maybe you could be the winner!'''
 
 
 # - - - - - - - - - -
@@ -97,7 +79,7 @@ market_consensus = True
 # - - - - - - - - - -
 # Year
 # - - - - - - - - - -
-year = 1 #datetime.now().year
+year = datetime.now().year - 2019
 
 
 # - - - - - - - - - -
@@ -137,11 +119,11 @@ elif 3 < favor_odds <= 10:
     odds_3_to_10 = 1.0
 
 
-'''If you're sure of your choices, let's see if we can make some money!'''
+'''If you're sure of your choices, let's see if we can make some money! 💰'''
 
 
 if st.button("LET'S GO"):
-    '''# Analyzing the data...'''
+    '''# Analyzing the data... 📊'''
 
     #Calculating the VIG Rate
     vig_rate = (1 - (1 / (1/against_odds + 1/favor_odds)))*100
@@ -175,12 +157,20 @@ if st.button("LET'S GO"):
     for i in range(100):
         bar.progress(i + 1)
         time.sleep(0.05)
-    '''# DONE!'''
-    time.sleep(2)
-    '''According to our experts, your chances of geeting a positive result on
-    this bet are **statistically significant**!'''
-    '''## Go place that bet!'''
 
-    st.write(response)
+    '''# DONE! 😎'''
 
-#st.markdown('# ' + '$' + str(round(response['fare'], 2)))
+    final_prediction = float(response['result'])
+
+    #This 'print' shows the prediction in the Terminal, so we can compare it
+    #with the Streamlit text
+    print(final_prediction)
+
+    if final_prediction > 0:
+        '''According to our experts, your chances of geeting a positive result on
+        this bet are **statistically significant**!'''
+        '''## Go place that bet! 🤑'''
+    elif final_prediction < 0:
+        '''According to our experts, your chances of geeting a positive result on
+        this bet **aren't statistically significant**!'''
+        '''## Do not place that bet! 💩'''
