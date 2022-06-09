@@ -34,7 +34,7 @@ def predict(D1:float, D2:float, D3:float, D4:float, vig_rate:bool, market_consen
             'D4': D4,
             'vig_rate': vig_rate,
             'market_consensus': market_consensus,
-            'year': int(year),
+            'year': year,
             'match_time_after_4_pm': match_time_after_4_pm,
             'match_time_before_4_pm': match_time_before_4_pm,
             'odds_1_to_1_5': odds_1_to_1_5,
@@ -46,7 +46,7 @@ def predict(D1:float, D2:float, D3:float, D4:float, vig_rate:bool, market_consen
     X_pred_df = pd.DataFrame(X_pred, index=[0])
     model = joblib.load('model.joblib')
     bet_no_bet = model.predict(X_pred_df)
-    return {'result': f'{bet_no_bet[0]}'}
+    return {'return': f'{bet_no_bet[0]}'}
 
 
 if __name__ == '__main__':
